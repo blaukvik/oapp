@@ -1,0 +1,33 @@
+html,body { 
+margin:0px; 
+height:100%; /* obs */ 
+}   
+
+/* default is canvas top left, info top right
+   but this is changed for phones
+ */ 
+  #id_mapcanvas {
+    width: 95%;
+    margin-top: 10px;
+    border: 1px solid #666;
+    height: 300px;
+    float:right;
+    padding: 2px;
+  }
+  #id_infopanel {
+    width: 5%;
+    padding: 1em;
+    float:top;
+    padding-bottom: 2em;
+    /*
+    border: 1px solid #666;
+    */
+  }
+  #footer {
+    clear:both;
+    border-top: 1px solid #666; 
+    /*
+    border: 1px solid #666; 
+    */
+    padding: 1em 
+  }

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Løypelegger</title>
+
+        <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" ></script>
+
+        <script type="text/javascript"
+                src="http://maps.google.com/maps/api/js?sensor=false">
+
+        </script>
+
+        <script type="text/javascript" src="Loype.js"></script>
+        <script type="text/javascript" src="oapp.js"></script>
+
+        <link rel="stylesheet" media="screen"
+              type="text/css" href="planner.css" />
+
+        <script type="text/javascript">
+
+visEgenPos = 0;
+loypeModus = 1;
+visHale = 0;
+automatiskSentrering = 0;
+
+        </script>
+
+
+    </head>
+
+
+    <body>
+
+        <!-- the canvas is placed top left on PC, or plain top on phone -->
+        <div id="id_mapcanvas"></div>
+
+        <form>
+
+            <!-- the infopanel is placed top right on PC, or below map on phone -->
+            <div id="id_infopanel">
+                <br> <b>Løype:</b><input id='id_loypenr' type="number" value="1" onkeydown="if (event.keyCode == 13) {return false;}" />
+                <br/> 
+                <button type="button" onclick="onLagreKlikk();">Lagre</button>
+                <br/> 
+                <button type="button" onclick="onNyKlikk();">Ny</button>
+                <br/> 
+                <button type="button" onclick="onEgenPosKlikk();">Senter på egen pos</button>
+                <label>Lengde:</label> <output id='id_loypelengde'>00</output>
+                 <br/>
+                 Vis egen posisjon <input id='id_cbvisegenpos' type="checkbox" onclick='onCbVisEgenPosKlikk();' />
+                 Autosentrer <input id='id_cbautosentrer' type="checkbox" onclick='onCbAutoSentrerKlikk();' />
+                 Vis hale <input id='id_cbhale' type="checkbox" onclick='onCbHaleKlikk();' />
+                 <br/>
+                 <textarea id='id_log' rows='4' cols='40' />tom</textarea>
+
+            </div>
+        </form>
+    </body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>O-get</title>
+
+        <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" ></script>
+        <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+        
+        <script type="text/javascript"
+                src="http://maps.google.com/maps/api/js?sensor=false&libraries=geometry">
+
+        </script>
+
+        <script type="text/javascript" src="hamburger.js"></script>
+        
+ <link rel="stylesheet" type="text/css" media="all" href="hamburger.css" />
+ <link rel="stylesheet" media="screen and (min-device-width: 801px)" type="text/css" href="okart.css" />
+<LINK rel="stylesheet" media="screen and (max-device-width: 800px)" type="text/css" href="okart_small.css">
+
+        <script type="text/javascript" src="Loype.js"></script>
+        <script type="text/javascript" src="oapp.js"></script>
+
+                
+        
+
+        <script type="text/javascript">
+            
+         lopsModus = true;
+         
+         visEgenPos = 1;
+         visHale = 1;
+         automatiskSentrering = 1;
+         
+            
+
+        </script>
+
+<script>
+
+var timer = (function() {
+    var basePeriod = 10000;
+    var timeoutRef;
+
+    return {
+      start : function(speed, id) {
+        timer.run();
+      },
+
+      run: function() {
+        if (timeoutRef) clearInterval(timeoutRef);
+
+        logText("Timer");
+        
+        if (nopos === true)
+        {
+            logText("restart pos");
+            
+            getOwnPosition();
+        }
+        
+
+        timeoutRef = setTimeout(timer.run, basePeriod);
+      },
+
+    }
+
+}());
+
+window.onload = function(){timer.start(10, 'timer');};
+
+</script>
+
+        
+        
+        
+    </head>
+
+
+    <body>
+    <div id="container">
+
+        <!--The Hamburger Button in the Header-->
+        <header>
+            <div id="hamburger">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <label>Tid:</label><output id='id_brukttid'>Velg løype</output><label>Siste pos:</label> <output id='id_gpsage'>00</output>
+        </header>
+
+        <!--The mobile navigation Markup hidden via css-->
+        <nav class="mobileNav">
+            <ul>
+                <li><label>Løype nr:</label><input id='id_loypenr' type="number"  onkeydown="if (event.keyCode == 13) {onDoGetKlikk();return false;}" />                
+                <button type="button" onclick="onDoGetKlikk();">Hent</button>
+</li>
+                <li><label>Løpernavn:</label><input id='id_lopernavn' type=text value="ikke satt" onkeydown="lagreLoperNavn();" /></li>
+                <li><label>Vis egen posisjon </label><input id='id_cbvisegenpos' type="checkbox" checked onclick='onCbVisEgenPosKlikk();' /></li>
+                <li><label>Autosentrer </label><input id='id_cbautosentrer' type="checkbox" checked onclick='onCbAutoSentrerKlikk();' /></li>
+                <li><label>Vis hale</label> <input id='id_cbhale' type="checkbox" checked onclick='onCbHaleKlikk();' /></li>
+            </ul>
+        </nav>
+
+        <!--The Layer that will be layed over the content
+        so that the content is unclickable while menu is shown-->
+        <div id="contentLayer"></div>
+
+ <div id="content">
+     
+        <div id="id_mapcanvas"></div>
+<br/>
+                 <textarea id='id_log' rows='4' cols='40' />tom</textarea>
+                <br/>
+ </div> 
+    </div>
+    </body>
+</html>
